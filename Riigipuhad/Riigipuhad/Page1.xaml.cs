@@ -17,6 +17,7 @@ namespace Riigipuhad
         Image img;
         public Page1()
         {
+            Title = "Jaanuar";
             lbl = new Label()
             {
                 Text = "Uusaasta",
@@ -30,7 +31,7 @@ namespace Riigipuhad
             {
                 Text = "01. jaanuar",
                 FontAttributes = FontAttributes.Italic,
-                Padding = new Thickness(10, 10),
+                Padding = new Thickness(10, 10, 10, 10),
             };
             lbl2 = new Label() /*https://xn--riigiphad-v9a.ee/ */
             {
@@ -39,7 +40,7 @@ namespace Riigipuhad
                 "jaanuari kui uusaastat nimetatud ka nääripäevaks.",
                 FontSize = 18,
                 TextColor = Color.Black,
-                Padding = new Thickness(10, 10, 10, 20),
+                Padding = new Thickness(10, 10, 10, 10),
             };
             lbl3 = new Label()
             {
@@ -49,12 +50,20 @@ namespace Riigipuhad
                 TextColor = Color.Black,
                 Padding = new Thickness(10, 10, 5, 10),
             };
-            img.Source = ImageSource.FromFile("uusaasta.jpg");
+
+            
+            img = new Image { 
+                Source = ImageSource.FromFile("uusaasta2.jpg"),
+                Margin = new Thickness(15, 20, 15, 5),
+            };
+
             StackLayout stackLayout = new StackLayout()
             {
                 Children = { lbl, lbl1, lbl2, lbl3, img }
             };
-            Content = stackLayout;
+
+            ScrollView scroll = new ScrollView {Content = stackLayout };
+            Content = scroll;
         }
     }
 }
