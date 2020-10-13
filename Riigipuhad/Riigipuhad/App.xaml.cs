@@ -10,7 +10,7 @@ namespace Riigipuhad
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new aastaaeg();
         }
 
         protected override void OnStart()

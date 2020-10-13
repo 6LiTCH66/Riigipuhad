@@ -68,6 +68,15 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\es.jpg" />
+    <AndroidResource Include="Resources\drawable\jaani.jpg" />
+    <AndroidResource Include="Resources\drawable\joulu.jpg" />
+    <AndroidResource Include="Resources\drawable\nov.jpg" />
+    <AndroidResource Include="Resources\drawable\okt.jpg" />
+    <AndroidResource Include="Resources\drawable\taa.jpg" />
+    <AndroidResource Include="Resources\drawable\te.jpg" />
+    <AndroidResource Include="Resources\drawable\vana.jpg" />
+    <AndroidResource Include="Resources\drawable\vord2.jpg" />
     <AndroidResource Include="Resources\layout\Tabbar.xml" />
     <AndroidResource Include="Resources\layout\Toolbar.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
