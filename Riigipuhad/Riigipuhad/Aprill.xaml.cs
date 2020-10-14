@@ -118,7 +118,11 @@ namespace Riigipuhad
             tapGestureRecognizer.Tapped += async (s, e) => {
                 if (Clipboard.HasText)
                 {
-                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://xn--riigiphad-v9a.ee/et/suur+reede"), "OK");
+                    bool action = await DisplayAlert("Success", string.Format("Vaata rohkem?"), "Jah", "Ei");
+                    if (action == true)
+                    {
+                        Device.OpenUri(new Uri("https://riigipühad.ee/et/suur+reede"));
+                    }
                 }
             };
             img.GestureRecognizers.Add(tapGestureRecognizer);
@@ -132,7 +136,12 @@ namespace Riigipuhad
             tapGestureRecognizer1.Tapped += async (s, e) => {
                 if (Clipboard.HasText)
                 {
-                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://xn--riigiphad-v9a.ee/et/%C3%BClest%C3%B5usmisp%C3%BChade+1.+p%C3%BCha"), "OK");
+                    bool action = await DisplayAlert("Success", string.Format("Vaata rohkem?"), "Jah", "Ei");
+                    if (action == true)
+                    {
+                        Device.OpenUri(new Uri("https://riigipühad.ee/et/ülestõusmispühade+1.+püha"));
+
+                    }
                 }
             };
             img1.GestureRecognizers.Add(tapGestureRecognizer1);

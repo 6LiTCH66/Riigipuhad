@@ -113,7 +113,7 @@ namespace Riigipuhad
             tapGestureRecognizer.Tapped += async (s, e) => {
                 if (Clipboard.HasText)
                 {
-                    bool action = await DisplayAlert("Success", string.Format("Vaata rohkem? {0}","https://et.wikipedia.org/wiki/Jaanip%C3%A4ev"), "Jah", "Ei");
+                    bool action = await DisplayAlert("Success", string.Format("Vaata rohkem?"), "Jah", "Ei");
                     if(action == true)
                     {
                         Device.OpenUri(new Uri("https://et.wikipedia.org/wiki/Jaanip%C3%A4ev"));
@@ -134,7 +134,11 @@ namespace Riigipuhad
             tapGestureRecognizer1.Tapped += async (s, e) => {
                 if (Clipboard.HasText)
                 {
-                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://et.wikipedia.org/wiki/V%C3%B5idup%C3%BCha"), "OK");
+                    bool action = await DisplayAlert("Success", string.Format("Vaata rohkem?"), "Jah", "Ei");
+                    if(action == true)
+                    {
+                        Device.OpenUri(new Uri("https://et.wikipedia.org/wiki/V%C3%B5idup%C3%BCha"));
+                    }
                 }
             };
             img.GestureRecognizers.Add(tapGestureRecognizer1);

@@ -61,7 +61,11 @@ namespace Riigipuhad
             tapGestureRecognizer.Tapped += async (s, e) => {
                 if (Clipboard.HasText)
                 {
-                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://et.wikipedia.org/wiki/Hingedep%C3%A4ev"), "OK");
+                    bool action = await DisplayAlert("Success", string.Format("Vaata rohkem?"), "Jah", "Ei");
+                    if(action == true)
+                    {
+                        Device.OpenUri(new Uri("https://et.wikipedia.org/wiki/Hingedep%C3%A4ev"));
+                    }
                 }
             };
             _image.GestureRecognizers.Add(tapGestureRecognizer);

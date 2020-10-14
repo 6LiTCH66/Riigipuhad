@@ -62,7 +62,11 @@ namespace Riigipuhad
             tapGestureRecognizer.Tapped += async (s, e) => {
                 if (Clipboard.HasText)
                 {
-                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "http://www.errs.ee/index.php?id=10767"), "OK");
+                    bool action = await DisplayAlert("Success", string.Format("Vaata rohkem?"), "Jah", "Ei");
+                    if(action == true)
+                    {
+                        Device.OpenUri(new Uri("http://www.errs.ee/index.php?id=10767"));
+                    }
                 }
             };
             _image.GestureRecognizers.Add(tapGestureRecognizer);

@@ -56,7 +56,11 @@ namespace Riigipuhad
             tapGestureRecognizer1.Tapped += async (s, e) => {
                 if (Clipboard.HasText)
                 {
-                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://xn--riigiphad-v9a.ee/et/j%C3%B5ululaup%C3%A4ev"), "OK");
+                    bool action = await DisplayAlert("Success", string.Format("Vaata rohkem? {0}","https://riigipühad.ee/et/jõululaupäev"), "Jah", "Ei");
+                    if(action == true)
+                    {
+                        Device.OpenUri(new Uri("https://xn--riigiphad-v9a.ee/et/jõululaupäev"));
+                    }
                 }
 
             };
@@ -94,7 +98,11 @@ namespace Riigipuhad
             tapGestureRecognizer.Tapped += async (s, e) => {
                 if (Clipboard.HasText)
                 {
-                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://xn--riigiphad-v9a.ee/et/esimene+j%C3%B5ulup%C3%BCha"), "OK");
+                    bool action = await DisplayAlert("Success", string.Format("Vaata rohkem?"), "Jah", "Ei");
+                    if(action == true)
+                    {
+                        Device.OpenUri(new Uri("https://riigipühad.ee/et/esimene+jõulupüha"));
+                    }
                 }
 
             };
@@ -132,7 +140,11 @@ namespace Riigipuhad
             tapGestureRecognizer2.Tapped += async (s, e) => {
                 if (Clipboard.HasText)
                 {
-                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://xn--riigiphad-v9a.ee/et/teine+j%C3%B5ulup%C3%BCha"), "OK");
+                    bool action = await DisplayAlert("Success", string.Format("Vaata rohkem?"), "Jah", "Ei");
+                    if(action == true)
+                    {
+                        Device.OpenUri(new Uri("https://xn--riigiphad-v9a.ee/et/teine+jõulupüha"));
+                    }
                 }
 
             };

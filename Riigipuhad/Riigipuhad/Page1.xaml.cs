@@ -60,7 +60,11 @@ namespace Riigipuhad
             tapGestureRecognizer1.Tapped += async (s, e) => {
                 if (Clipboard.HasText)
                 {
-                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://xn--riigiphad-v9a.ee/et/uusaasta"), "OK");
+                    bool action = await DisplayAlert("Success", string.Format("Vaata rohkem?"), "Jah", "Ei");
+                    if(action == true)
+                    {
+                        Device.OpenUri(new Uri("https://riigipühad.ee/et/uusaasta"));
+                    }
                 }
             };
             img.GestureRecognizers.Add(tapGestureRecognizer1);

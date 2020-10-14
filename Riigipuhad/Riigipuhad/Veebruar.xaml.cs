@@ -76,7 +76,11 @@ namespace Riigipuhad
             tapGestureRecognizer1.Tapped += async (s, e) => {
                 if (Clipboard.HasText)
                 {
-                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://xn--riigiphad-v9a.ee/et/iseseisvusp%C3%A4ev%2C+eesti+vabariigi+aastap%C3%A4ev"), "OK");
+                    bool action = await DisplayAlert("Success", string.Format("Vaata rohkem?"), "Jah", "Ei");
+                    if(action == true)
+                    {
+                        Device.OpenUri(new Uri("https://riigipühad.ee/et/iseseisvuspäev%2C+eesti+vabariigi+aastapäev"));
+                    }
                 }
 
             };
