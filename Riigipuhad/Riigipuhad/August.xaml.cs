@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -66,6 +66,18 @@ namespace Riigipuhad
                 Source = ImageSource.FromFile("taa.jpg"),
                 Margin = new Thickness(15, 20, 15, 5),
             };
+            var tapGestureRecognizer1 = new TapGestureRecognizer();
+            tapGestureRecognizer1.Tapped += async (s, e) => {
+                if (Clipboard.HasText)
+                {
+                    bool action = await DisplayAlert("Success", string.Format("Vaata rohkem? {0}","https://xn--riigiphad-v9a.ee/et/taasiseseisvumisp%C3%A4ev"), "Jah", "Ei");
+                    if(action == true)
+                    {
+                        Device.OpenUri(new Uri("https://riigipühad.ee/et/taasiseseisvumispäev"));
+                    }
+                }
+            };
+            img.GestureRecognizers.Add(tapGestureRecognizer1);
             StackLayout stackLayout = new StackLayout()
             {
                 Children = { lbl1, lbl2, lbl3, lbl4, lbl5, lbl6, img}
