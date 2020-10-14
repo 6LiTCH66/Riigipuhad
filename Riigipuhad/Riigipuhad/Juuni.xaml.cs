@@ -15,6 +15,8 @@ namespace Riigipuhad
         
         Label lbl1, lbl2, lbl3, lbl4, lbl5, lbl6, lbl7, lbl8, lbl9, lbl10, lbl11;
         Image img, img1;
+
+        [Obsolete]
         public Juuni()
         {
             Title = "Juuni";
@@ -106,13 +108,19 @@ namespace Riigipuhad
                 Source = ImageSource.FromFile("jaani.jpg"),
                 Margin = new Thickness(15, 20, 15, 5),
             };
-
+            
             var tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.Tapped += async (s, e) => {
                 if (Clipboard.HasText)
                 {
-                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://et.wikipedia.org/wiki/Jaanip%C3%A4ev"), "OK");
+                    bool action = await DisplayAlert("Success", string.Format("Kas tahad vaatad internetis? {0}","https://et.wikipedia.org/wiki/Jaanip%C3%A4ev"), "Jah", "Ei");
+                    if(action == true)
+                    {
+                        Device.OpenUri(new Uri("https://et.wikipedia.org/wiki/Jaanip%C3%A4ev"));
+                    }
+                   
                 }
+                
             };
             img1.GestureRecognizers.Add(tapGestureRecognizer);
 
