@@ -113,7 +113,7 @@ namespace Riigipuhad
             tapGestureRecognizer.Tapped += async (s, e) => {
                 if (Clipboard.HasText)
                 {
-                    bool action = await DisplayAlert("Success", string.Format("Kas tahad vaatad internetis? {0}","https://et.wikipedia.org/wiki/Jaanip%C3%A4ev"), "Jah", "Ei");
+                    bool action = await DisplayAlert("Success", string.Format("Vaata rohkem? {0}","https://et.wikipedia.org/wiki/Jaanip%C3%A4ev"), "Jah", "Ei");
                     if(action == true)
                     {
                         Device.OpenUri(new Uri("https://et.wikipedia.org/wiki/Jaanip%C3%A4ev"));
