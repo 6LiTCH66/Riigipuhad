@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -52,7 +52,16 @@ namespace Riigipuhad
                 Source = ImageSource.FromFile("joulu.jpg"),
                 Margin = new Thickness(15, 20, 15, 5),
             };
-            
+            var tapGestureRecognizer1 = new TapGestureRecognizer();
+            tapGestureRecognizer1.Tapped += async (s, e) => {
+                if (Clipboard.HasText)
+                {
+                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://xn--riigiphad-v9a.ee/et/j%C3%B5ululaup%C3%A4ev"), "OK");
+                }
+
+            };
+            _image.GestureRecognizers.Add(tapGestureRecognizer1);
+
             _label4 = new Label()
             {
                 Text = "Esimene jõulupüha",
@@ -81,6 +90,15 @@ namespace Riigipuhad
                 Source = ImageSource.FromFile("es.jpg"),
                 Margin = new Thickness(15, 20, 15, 5),
             };
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += async (s, e) => {
+                if (Clipboard.HasText)
+                {
+                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://xn--riigiphad-v9a.ee/et/esimene+j%C3%B5ulup%C3%BCha"), "OK");
+                }
+
+            };
+            _image1.GestureRecognizers.Add(tapGestureRecognizer);
             _label7 = new Label()
             {
                 Text = "Teine jõulupüha",
@@ -109,6 +127,16 @@ namespace Riigipuhad
                 Source = ImageSource.FromFile("te.jpg"),
                 Margin = new Thickness(15, 20, 15, 5),
             };
+
+            var tapGestureRecognizer2 = new TapGestureRecognizer();
+            tapGestureRecognizer2.Tapped += async (s, e) => {
+                if (Clipboard.HasText)
+                {
+                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://xn--riigiphad-v9a.ee/et/teine+j%C3%B5ulup%C3%BCha"), "OK");
+                }
+
+            };
+            _image2.GestureRecognizers.Add(tapGestureRecognizer2);
             StackLayout stackLayout = new StackLayout()
             {
                 Children = { _label, _label1, _label2, _label3, _image}

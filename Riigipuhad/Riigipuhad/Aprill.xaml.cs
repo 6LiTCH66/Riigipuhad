@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -114,11 +114,28 @@ namespace Riigipuhad
                 Source = ImageSource.FromFile("suurrede.jpg"),
                 Margin = new Thickness(15, 20, 15, 5),
             };
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += async (s, e) => {
+                if (Clipboard.HasText)
+                {
+                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://xn--riigiphad-v9a.ee/et/suur+reede"), "OK");
+                }
+            };
+            img.GestureRecognizers.Add(tapGestureRecognizer);
+
             img1 = new Image
             {
                 Source = ImageSource.FromFile("munad.jpg"),
                 Margin = new Thickness(15, 20, 15, 5),
             };
+            var tapGestureRecognizer1 = new TapGestureRecognizer();
+            tapGestureRecognizer1.Tapped += async (s, e) => {
+                if (Clipboard.HasText)
+                {
+                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://xn--riigiphad-v9a.ee/et/%C3%BClest%C3%B5usmisp%C3%BChade+1.+p%C3%BCha"), "OK");
+                }
+            };
+            img1.GestureRecognizers.Add(tapGestureRecognizer1);
 
             StackLayout stackLayout1 = new StackLayout()
             {

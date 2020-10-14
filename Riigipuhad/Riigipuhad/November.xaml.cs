@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -57,9 +57,14 @@ namespace Riigipuhad
                 Source = ImageSource.FromFile("nov.jpg"),
                 Margin = new Thickness(15, 20, 15, 5),
             };
-            var tap = new TapGestureRecognizer();
-            tap.Tapped += TapOnTapped;
-            _image.GestureRecognizers.Add(tap);
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += async (s, e) => {
+                if (Clipboard.HasText)
+                {
+                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://et.wikipedia.org/wiki/Hingedep%C3%A4ev"), "OK");
+                }
+            };
+            _image.GestureRecognizers.Add(tapGestureRecognizer);
             StackLayout stackLayout = new StackLayout()
             {
                 Children = { _label1, _label2, _label3, _label4, _image}
@@ -68,9 +73,6 @@ namespace Riigipuhad
             Content = scrollView;
         }
 
-        private void TapOnTapped(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -72,7 +72,15 @@ namespace Riigipuhad
                 Source = ImageSource.FromFile("vabariigi.jpg"),
                 Margin = new Thickness(15, 20, 15, 5),
             };
+            var tapGestureRecognizer1 = new TapGestureRecognizer();
+            tapGestureRecognizer1.Tapped += async (s, e) => {
+                if (Clipboard.HasText)
+                {
+                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://xn--riigiphad-v9a.ee/et/iseseisvusp%C3%A4ev%2C+eesti+vabariigi+aastap%C3%A4ev"), "OK");
+                }
 
+            };
+            img.GestureRecognizers.Add(tapGestureRecognizer1);
             StackLayout stackLayout = new StackLayout()
             {
                 Children = {lbl, lbl1, lbl2, lbl3, lbl4, img}

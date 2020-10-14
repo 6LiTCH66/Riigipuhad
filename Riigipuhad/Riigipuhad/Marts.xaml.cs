@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -78,6 +78,15 @@ namespace Riigipuhad
                 Source = ImageSource.FromFile("emakeel.jpg"),
                 Margin = new Thickness(15, 20, 15, 5),
             };
+
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += async (s, e) => {
+                if (Clipboard.HasText)
+                {
+                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://monikaundo.weebly.com/emakeelepaumlev.html"), "OK");
+                }
+            };
+            img.GestureRecognizers.Add(tapGestureRecognizer);
             StackLayout stackLayout = new StackLayout()
             {
                 Children = { lbl, lbl1, lbl2, lbl3, lbl4, lbl5, img },

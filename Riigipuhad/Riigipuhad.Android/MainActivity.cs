@@ -6,7 +6,6 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-
 namespace Riigipuhad.Droid
 {
     [Activity(Label = "Riigipuhad", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
@@ -14,6 +13,7 @@ namespace Riigipuhad.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 

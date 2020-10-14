@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -59,6 +59,14 @@ namespace Riigipuhad
                 Source = ImageSource.FromFile("vana.jpg"),
                 Margin = new Thickness(15, 20, 15, 5),
             };
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += async (s, e) => {
+                if (Clipboard.HasText)
+                {
+                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://et.wikipedia.org/wiki/Vanavanemate_p%C3%A4ev"), "OK");
+                }
+            };
+            _image.GestureRecognizers.Add(tapGestureRecognizer);
             StackLayout stackLayout = new StackLayout()
             {
                 Children = {_label, _label1, _label2, _label3, _label4, _image }

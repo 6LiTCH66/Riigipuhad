@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -52,6 +52,14 @@ namespace Riigipuhad
                 Source = ImageSource.FromFile("kevad.jpg"),
                 Margin = new Thickness(15, 20, 15, 5),
             };
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += async (s, e) => {
+                if (Clipboard.HasText)
+                {
+                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://xn--riigiphad-v9a.ee/et/kevadp%C3%BCha"), "OK");
+                }
+            };
+            img.GestureRecognizers.Add(tapGestureRecognizer);
             StackLayout stackLayout = new StackLayout()
             {
                 Children = {lbl, lbl1, lbl2, lbl3, img}

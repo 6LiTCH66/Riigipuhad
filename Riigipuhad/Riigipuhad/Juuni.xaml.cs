@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -106,11 +106,31 @@ namespace Riigipuhad
                 Source = ImageSource.FromFile("jaani.jpg"),
                 Margin = new Thickness(15, 20, 15, 5),
             };
+
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += async (s, e) => {
+                if (Clipboard.HasText)
+                {
+                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://et.wikipedia.org/wiki/Jaanip%C3%A4ev"), "OK");
+                }
+            };
+            img1.GestureRecognizers.Add(tapGestureRecognizer);
+
             img = new Image()
             {
                 Source = ImageSource.FromFile("vord2.jpg"),
                 Margin = new Thickness(15, 20, 15, 5),
             };
+
+            var tapGestureRecognizer1 = new TapGestureRecognizer();
+            tapGestureRecognizer1.Tapped += async (s, e) => {
+                if (Clipboard.HasText)
+                {
+                    await DisplayAlert("Success", string.Format("Vaata kõik vebsitile {0}", "https://et.wikipedia.org/wiki/V%C3%B5idup%C3%BCha"), "OK");
+                }
+            };
+            img.GestureRecognizers.Add(tapGestureRecognizer1);
+
             StackLayout stackLayout1 = new StackLayout()
             {
                 Children = { lbl5, lbl6, lbl7, lbl8, lbl9, lbl10, lbl11, img1}
